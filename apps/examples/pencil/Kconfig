@@ -1,0 +1,33 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_PENCIL
+	tristate "Verify C++ pencil operations"
+	default n
+	---help---
+		Enable the a simple test to verify C++ test operations.
+
+if EXAMPLES_PENCIL
+
+config EXAMPLES_PENCIL_PROGNAME
+	string "Program name"
+	default "pencil"
+	depends on BUILD_LOADABLE
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_PENCIL_PRIORITY
+	int "PENCIL task priority"
+	default 100
+
+config EXAMPLES_PENCIL_STACKSIZE
+	int "PENCIL stack size"
+	default 2048
+
+
+endif 
+
+

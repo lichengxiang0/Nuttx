@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_MYLED
+	tristate "\"MylED!\" example"
+	default n
+	---help---
+		Enable the \"MyLED!\" example
+
+if EXAMPLES_MYLED
+
+config EXAMPLES_MYLED_PROGNAME
+	string "Program name"
+	default "myled"
+	depends on BUILD_LOADABLE
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_MYLED_PRIORITY
+	int "MyLED task priority"
+	default 100
+
+config EXAMPLES_MYLED_STACKSIZE
+	int "MyLED stack size"
+	default 2048
+
+endif
